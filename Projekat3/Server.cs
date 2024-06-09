@@ -11,6 +11,9 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Threading;
+using System.Net;
+using Octokit;
+using System.Reactive;
 
 
 
@@ -18,64 +21,89 @@ namespace Projekat3
 {
     public class Server : IObservable<IssueComment>
     {
-        const string API_KEY = "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";
-        HttpClient client;
-        public Subject<IssueComment> issueStream;
-
-        const string BASE_URL = "https://api.github.com/repos";
+        private Subject<IssueComment> issueStream;
+        private HttpListener listener;
+        private GitHubAPI api;
+        private IDisposable subscription1;
+        private IDisposable subscription2;
 
 
         public Server()
         {
-            client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_KEY);
-            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0"));
+            listener = new HttpListener();
+            listener.Prefixes.Add("http://localhost:8080/");
             issueStream = new Subject<IssueComment>();
+            api = new GitHubAPI();
         }
-        public void Serach(string owner, string type)
+        public void Answer(HttpStatusCode code, string data, HttpListenerContext context)
         {
-            client.GetAsync($"{BASE_URL}/{owner}/{type}/issues").ContinueWith(async (task) =>
+            var response = context.Response;
+            byte[] buffer;
+            response.StatusCode = (int)code;
+            buffer = Encoding.UTF8.GetBytes(data);
+            response.ContentLength64 = buffer.Length;
+            response.OutputStream.Write(buffer, 0, buffer.Length);
+            response.OutputStream.Close();
+        }
+        public void Start()
+        {
+            Console.WriteLine("Server started");
+            listener.Start();
+            while (true)
             {
-                try
-                {
-                    var response = task.Result;
-                    if (!(response.IsSuccessStatusCode))
-                        throw new Exception($"From thread:  {Thread.CurrentThread.ManagedThreadId}, Querry failed. Reason: {response.ReasonPhrase}");
-                    var responseSTRING = await response.Content.ReadAsStringAsync();
-                    var responseJSON = JArray.Parse(responseSTRING);
-                    foreach (JObject item in responseJSON)
-                    {
-                        var idIssue = (string)item["number"];
-                        var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
-                        var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
-
-                        var responseJSON2 = JArray.Parse(commentsResponseString);
-                        foreach (var item2 in responseJSON2)
-                        {
-                            var issueObj = new IssueComment((string)item2["id"], new Issue(idIssue, (string)item["user"]["login"], (string)item["title"]), (string)item2["body"]);
-
-                            Console.WriteLine($"From thread:  {Thread.CurrentThread.ManagedThreadId}");
-                            issueStream.OnNext(issueObj);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    issueStream.OnError(ex);
-                }
-            issueStream.OnCompleted();
-            });
+                var context = listener.GetContext();
+                Task.Run(() => HandleRequest(context));
+            }
+        }
+        public void Stop()
+        {
+            listener.Stop();
+            subscription1.Dispose();
+            subscription2.Dispose();
         }
         public IDisposable Subscribe(IObserver<IssueComment> observer)
         {
-            return issueStream
-                .ObserveOn(ThreadPoolScheduler
-                .Instance).Subscribe(observer);
+                 return issueStream
+                //.SubscribeOn(ThreadPoolScheduler.Instance)
+                //.ObserveOn(ThreadPoolScheduler.Instance)
+                .Subscribe(observer);
         }
 
+        private void HandleRequest(HttpListenerContext context)
+        {
+            var request = context.Request;
+            try
+            {
+            if (request.HttpMethod != "GET" || request.RawUrl.Contains("favicon.ico"))
+            {
+                Answer(HttpStatusCode.BadRequest, "Bad request", context);
+                return;
+            }
+           
+            string[] parts = request.RawUrl.Split('/');
+            if (parts.Length != 3)
+            {
+                Answer(HttpStatusCode.BadRequest, null, context);
+                return;
+            }
+            var owner = parts[1];
+            var type = parts[2];
+            IScheduler scheduler = NewThreadScheduler.Default;
 
+            var observer1 = new IssueCommentObserver(1);
+            var observer2 = new IssueCommentObserver(2);
+            issueStream.Subscribe(observer1);
+            issueStream.Subscribe(observer2);
 
-
+            api.Search(owner, type,scheduler,issueStream);
+            Answer(HttpStatusCode.OK, "Processing...", context);
+            return;
+            }
+catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
+
 }

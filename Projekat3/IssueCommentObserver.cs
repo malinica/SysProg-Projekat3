@@ -10,20 +10,17 @@ namespace Projekat3
 {
     public class IssueCommentObserver : IObserver<IssueComment>
     {
-        SentimentIntensityAnalyzer analyzer;
-        List<IssueReview> analyzedIssues;
+      //  List<IssueComment> analyzedIssues;
         public int ID { get; set; }
         public IssueCommentObserver()
         {
-            analyzer = new SentimentIntensityAnalyzer();
-            analyzedIssues = new List<IssueReview>();
+        //    analyzedIssues = new List<IssueReview>();
         }
 
         public IssueCommentObserver(int id)
         {
             ID = id;
-            analyzer = new SentimentIntensityAnalyzer();
-            analyzedIssues = new List<IssueReview>();
+//            analyzedIssues = new List<IssueReview>();
         }
 
 
@@ -39,11 +36,10 @@ namespace Projekat3
 
         public void OnNext(IssueComment value)
         {
-            //Thread.Sleep(ID * 1000);
-            var analyze = analyzer.PolarityScores($"{value.commentText}");
-            analyzedIssues.Add(new IssueReview(value, analyze.Positive, analyze.Negative, analyze.Neutral));
-            Console.WriteLine($"Issue: {value.Issue.title},commentID: {value.commentID}, comment: {value.commentText}, positive: {analyze.Positive}, negative: {analyze.Negative}, neutral: {analyze.Neutral} ");
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}, observer {ID}");
+//            Thread.Sleep(ID * 1000);
+//            analyzedIssues.Add(value);
+            Console.WriteLine(value.GetCommentDetails());
+            Console.WriteLine($" Thread {Thread.CurrentThread.ManagedThreadId}, observer {ID}");
         }
     }
 }
