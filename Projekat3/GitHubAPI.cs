@@ -37,48 +37,62 @@ namespace Projekat3
             comments = new List<IssueComment>();
 
         }
-        public void Search(string owner, string type, IScheduler scheduler, Subject<IssueComment> stream)
+        public void Search(string owner, string type, Subject<IssueComment> stream)
         {
-            Observable.Start(async () =>
-            {
-                try
-                {
-                    var response = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues");
-                    response.EnsureSuccessStatusCode();
-                    var responseString = await response.Content.ReadAsStringAsync();
-                    var responseJSON = JArray.Parse(responseString);
 
-                    if (responseJSON == null)
-                    {
-                        stream.OnCompleted();
-                        return;
-                    }
+            client.GetAsync($"{BASE_URL}/{owner}/{type}/issues").ContinueWith(async (task) =>
+           {
+               try
+               {
+                   var response = task.Result;
 
-                    foreach (JObject item in responseJSON)
-                    {
-                        var idIssue = (string)item["number"];
+                   response.EnsureSuccessStatusCode();
+                   var responseString = await response.Content.ReadAsStringAsync();
+                   var responseJSON = JArray.Parse(responseString);
 
-                        var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
-                        var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
+                   if (responseJSON == null)
+                   {
+                       stream.OnCompleted();
+                       return;
+                   }
 
-                        var responseJSON2 = JArray.Parse(commentsResponseString);
-                        foreach (var item2 in responseJSON2)
-                        {
-                            var textComment = (string)item2["body"];
-                            var analyze = analyzer.PolarityScores(textComment);
-                            var obj = new IssueComment(idIssue, owner, type, textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
-                            stream.OnNext(obj);
-                        }
-                    }
-                    stream.OnCompleted();
-                }
-                catch (Exception ex)
-                {
-                    stream.OnError(ex); 
-                }
-            }, scheduler);
+                   foreach (JObject item in responseJSON)
+                   {
+                       var idIssue = (string)item["number"];
+
+                       await await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments").ContinueWith(async (reviewTask) =>
+                                         {
+                                             try
+                                             {
+
+                                                 var commentsResponse = reviewTask.Result;
+                                                 var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
+
+                                                 var responseJSON2 = JArray.Parse(commentsResponseString);
+                                                 foreach (var item2 in responseJSON2)
+                                                 {
+                                                     var textComment = (string)item2["body"];
+                                                     var analyze = analyzer.PolarityScores(textComment);
+                                                     var obj = new IssueComment(idIssue, owner, type, textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
+                                                     Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
+                                                     stream.OnNext(obj);
+                                                 }
+                                             }
+                                             catch (Exception ex)
+                                             {
+                                                 stream.OnError(ex);
+                                             }
+                                         }
+                                         );
+                   }
+               }
+               catch (Exception ex)
+               {
+                   stream.OnError(ex);
+               }
+               stream.OnCompleted();
+           });
+
         }
-
     }
 }
-

@@ -65,7 +65,7 @@ namespace Projekat3
         {
                  return issueStream
                 //.SubscribeOn(ThreadPoolScheduler.Instance)
-                //.ObserveOn(ThreadPoolScheduler.Instance)
+                .ObserveOn(ThreadPoolScheduler.Instance)
                 .Subscribe(observer);
         }
 
@@ -88,14 +88,10 @@ namespace Projekat3
             }
             var owner = parts[1];
             var type = parts[2];
-            IScheduler scheduler = NewThreadScheduler.Default;
 
-            var observer1 = new IssueCommentObserver(1);
-            var observer2 = new IssueCommentObserver(2);
-            issueStream.Subscribe(observer1);
-            issueStream.Subscribe(observer2);
+            
 
-            api.Search(owner, type,scheduler,issueStream);
+            api.Search(owner, type, issueStream);
             Answer(HttpStatusCode.OK, "Processing...", context);
             return;
             }
