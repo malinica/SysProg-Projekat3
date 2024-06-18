@@ -22,7 +22,7 @@ namespace Projekat3
 {
     public class Server : IObservable<IssueComment>
     {
-        private BehaviorSubject<IssueComment> issueStream;
+        private ReplaySubject<IssueComment> issueStream;
         private HttpListener listener;
         private GitHubAPI api;
         private Cache cache;
@@ -35,7 +35,7 @@ namespace Projekat3
         cache = new Cache(10);
             listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:8080/");
-            issueStream = new BehaviorSubject<IssueComment>(null);
+            issueStream = new ReplaySubject<IssueComment>(TimeSpan.FromSeconds(30));
             api = new GitHubAPI();
         }
         public void Answer(HttpStatusCode code, string data, HttpListenerContext context)
