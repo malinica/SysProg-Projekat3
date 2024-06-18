@@ -25,7 +25,6 @@ namespace Projekat3
         const string BASE_URL = "https://api.github.com/repos";
         HttpClient client;
         SentimentIntensityAnalyzer analyzer;
-        List<IssueComment> comments;
 
 
         public GitHubAPI()
@@ -34,10 +33,9 @@ namespace Projekat3
             client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_KEY);
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0"));
-            comments = new List<IssueComment>();
 
         }
-        public async Task<Repository> Search(string owner, string type, Subject<IssueComment> stream)
+        public async Task<Repository> Search(string owner, string type, BehaviorSubject<IssueComment> stream)
         {
             try
             {
@@ -49,7 +47,6 @@ namespace Projekat3
 
                 if (responseJSON == null)
                 {
-                    stream.OnCompleted();
                     return null;
                 }
 
@@ -81,7 +78,6 @@ namespace Projekat3
                         return null;
                     }
                 }
-                stream.OnCompleted();
                 return r;
 
             }

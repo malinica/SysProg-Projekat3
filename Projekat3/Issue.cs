@@ -49,7 +49,6 @@ namespace Projekat3
         {
             try
             {
-
                 _lock.EnterReadLock();
                 string text = "";
                 text += $"IssueID: {issueID}, IssueText: {issueText}";

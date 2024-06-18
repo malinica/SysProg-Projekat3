@@ -22,20 +22,20 @@ namespace Projekat3
 {
     public class Server : IObservable<IssueComment>
     {
-        private Subject<IssueComment> issueStream;
+        private BehaviorSubject<IssueComment> issueStream;
         private HttpListener listener;
         private GitHubAPI api;
         private Cache cache;
-        private IDisposable subscription1;
-        private IDisposable subscription2;
+        private List<IDisposable> subscriptions;
 
 
         public Server()
         {
-            cache = new Cache(10);
+            subscriptions = new List<IDisposable>();
+        cache = new Cache(10);
             listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:8080/");
-            issueStream = new Subject<IssueComment>();
+            issueStream = new BehaviorSubject<IssueComment>(null);
             api = new GitHubAPI();
         }
         public void Answer(HttpStatusCode code, string data, HttpListenerContext context)
@@ -61,15 +61,21 @@ namespace Projekat3
         public void Stop()
         {
             listener.Stop();
-            subscription1.Dispose();
-            subscription2.Dispose();
+            issueStream.OnCompleted();
+            issueStream.Dispose();
+            foreach(var s in subscriptions)
+            {
+                s.Dispose();
+            }
         }
         public IDisposable Subscribe(IObserver<IssueComment> observer)
         {
-                 return issueStream
+            var subscription = issueStream
                 .SubscribeOn(NewThreadScheduler.Default)
                 .ObserveOn(ThreadPoolScheduler.Instance)
                 .Subscribe(observer);
+            subscriptions.Add(subscription); 
+            return subscription;
         }
 
         private async void HandleRequest(HttpListenerContext context)
@@ -86,7 +92,7 @@ namespace Projekat3
             string[] parts = request.RawUrl.Split('/');
             if (parts.Length != 3)
             {
-                Answer(HttpStatusCode.BadRequest, null, context);
+                Answer(HttpStatusCode.BadRequest, "Bad parameters of the request", context);
                 return;
             }
             var owner = parts[1];
@@ -94,7 +100,7 @@ namespace Projekat3
             if(cache.ImaKljuc(owner+"/"+type))
                 {
                     var rep = cache.CitajIzKesa(owner + "/" + type);
-
+                    /*
                     foreach (var i in rep.issueList)
                     {
                         foreach(var c in i._comments)
@@ -103,6 +109,7 @@ namespace Projekat3
                         issueStream.OnNext(c);
                         }
                     }
+                     * */
                     Answer(HttpStatusCode.OK, rep.ToString(), context);
 
                     return;
@@ -111,8 +118,8 @@ namespace Projekat3
                 {
 
             var issue=await api.Search(owner, type, issueStream);
+            Answer(HttpStatusCode.OK, issue.ToString(), context);
             cache.DodajUKes(owner + "/" + type,issue);
-                    Answer(HttpStatusCode.OK, issue.ToString(), context);
 
                 }
                 return;
