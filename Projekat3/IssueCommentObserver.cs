@@ -38,7 +38,7 @@ namespace Projekat3
         {
 //            Thread.Sleep(ID * 1000);
 //            analyzedIssues.Add(value);
-            Console.WriteLine(value.GetCommentDetails());
+//            Console.WriteLine(value.GetCommentDetails());
             Console.WriteLine($" Thread {Thread.CurrentThread.ManagedThreadId}, observer {ID}");
         }
     }

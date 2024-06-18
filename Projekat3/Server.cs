@@ -14,6 +14,7 @@ using System.Threading;
 using System.Net;
 using Octokit;
 using System.Reactive;
+using Projekat2;
 
 
 
@@ -24,12 +25,14 @@ namespace Projekat3
         private Subject<IssueComment> issueStream;
         private HttpListener listener;
         private GitHubAPI api;
+        private Cache cache;
         private IDisposable subscription1;
         private IDisposable subscription2;
 
 
         public Server()
         {
+            cache = new Cache(10);
             listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:8080/");
             issueStream = new Subject<IssueComment>();
@@ -64,12 +67,12 @@ namespace Projekat3
         public IDisposable Subscribe(IObserver<IssueComment> observer)
         {
                  return issueStream
-                //.SubscribeOn(ThreadPoolScheduler.Instance)
+                .SubscribeOn(NewThreadScheduler.Default)
                 .ObserveOn(ThreadPoolScheduler.Instance)
                 .Subscribe(observer);
         }
 
-        private void HandleRequest(HttpListenerContext context)
+        private async void HandleRequest(HttpListenerContext context)
         {
             var request = context.Request;
             try
@@ -88,12 +91,31 @@ namespace Projekat3
             }
             var owner = parts[1];
             var type = parts[2];
+            if(cache.ImaKljuc(owner+"/"+type))
+                {
+                    var rep = cache.CitajIzKesa(owner + "/" + type);
 
-            
+                    foreach (var i in rep.issueList)
+                    {
+                        foreach(var c in i._comments)
+                        {
 
-            api.Search(owner, type, issueStream);
-            Answer(HttpStatusCode.OK, "Processing...", context);
-            return;
+                        issueStream.OnNext(c);
+                        }
+                    }
+                    Answer(HttpStatusCode.OK, rep.ToString(), context);
+
+                    return;
+                }
+            else
+                {
+
+            var issue=await api.Search(owner, type, issueStream);
+            cache.DodajUKes(owner + "/" + type,issue);
+                    Answer(HttpStatusCode.OK, issue.ToString(), context);
+
+                }
+                return;
             }
 catch(Exception ex)
             {

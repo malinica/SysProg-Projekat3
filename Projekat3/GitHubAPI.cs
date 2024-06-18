@@ -37,62 +37,62 @@ namespace Projekat3
             comments = new List<IssueComment>();
 
         }
-        public void Search(string owner, string type, Subject<IssueComment> stream)
+        public async Task<Repository> Search(string owner, string type, Subject<IssueComment> stream)
         {
+            try
+            {
+                Repository r = new Repository();
+                var response = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues");
+                response.EnsureSuccessStatusCode();
+                var responseString = await response.Content.ReadAsStringAsync();
+                var responseJSON = JArray.Parse(responseString);
 
-            client.GetAsync($"{BASE_URL}/{owner}/{type}/issues").ContinueWith(async (task) =>
-           {
-               try
-               {
-                   var response = task.Result;
+                if (responseJSON == null)
+                {
+                    stream.OnCompleted();
+                    return null;
+                }
 
-                   response.EnsureSuccessStatusCode();
-                   var responseString = await response.Content.ReadAsStringAsync();
-                   var responseJSON = JArray.Parse(responseString);
+                foreach (JObject item in responseJSON)
+                {
+                    var idIssue = (string)item["number"];
+                    try
+                    {
+                        var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
+                        commentsResponse.EnsureSuccessStatusCode();
+                        var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
+                        var obj = new Issue(idIssue, owner, type);
+                        var responseJSON2 = JArray.Parse(commentsResponseString);
 
-                   if (responseJSON == null)
-                   {
-                       stream.OnCompleted();
-                       return;
-                   }
+                        foreach (var item2 in responseJSON2)
+                        {
+                            var textComment = (string)item2["body"];
+                            var analyze = analyzer.PolarityScores(textComment);
+                            var commObj = new IssueComment(textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
+                            obj.AddComment(commObj);
+                           // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
+                            stream.OnNext(commObj);
+                        }
+                    r.AddIssue(obj);
+                    }
+                    catch (Exception ex)
+                    {
+                        stream.OnError(ex);
+                        return null;
+                    }
+                }
+                stream.OnCompleted();
+                return r;
 
-                   foreach (JObject item in responseJSON)
-                   {
-                       var idIssue = (string)item["number"];
-
-                       await await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments").ContinueWith(async (reviewTask) =>
-                                         {
-                                             try
-                                             {
-
-                                                 var commentsResponse = reviewTask.Result;
-                                                 var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
-
-                                                 var responseJSON2 = JArray.Parse(commentsResponseString);
-                                                 foreach (var item2 in responseJSON2)
-                                                 {
-                                                     var textComment = (string)item2["body"];
-                                                     var analyze = analyzer.PolarityScores(textComment);
-                                                     var obj = new IssueComment(idIssue, owner, type, textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
-                                                     Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
-                                                     stream.OnNext(obj);
-                                                 }
-                                             }
-                                             catch (Exception ex)
-                                             {
-                                                 stream.OnError(ex);
-                                             }
-                                         }
-                                         );
-                   }
-               }
-               catch (Exception ex)
-               {
-                   stream.OnError(ex);
-               }
-               stream.OnCompleted();
-           });
-
+            }
+            catch (Exception ex)
+            {
+                stream.OnError(ex);
+                return null;
+            }
         }
+
+
+
     }
 }
