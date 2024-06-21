@@ -1,9 +1,6 @@
 ﻿using Projekat3;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,7 +43,7 @@ namespace Projekat2
                     return;
                 }
                 _kes.Add(key, s);
-  //              TrenutnoStanje();
+                //TrenutnoStanje();
             }
             catch (Exception ex)
             {

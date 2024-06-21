@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Projekat3
+﻿namespace Projekat3
 {
     public class IssueComment
     {
@@ -13,15 +6,15 @@ namespace Projekat3
         public double Positive { get; set; }
         public double Negative { get; set; }
         public double Neutral { get; set; }
-        
-        public IssueComment(string cText, double positive,double neutral, double negative)
-    {
-           
+
+        public IssueComment(string cText, double positive, double neutral, double negative)
+        {
+
             this.commentText = cText;
             this.Positive = positive;
             this.Negative = negative;
             this.Neutral = neutral;
-    
+
         }
         public string GetCommentDetails()
         {

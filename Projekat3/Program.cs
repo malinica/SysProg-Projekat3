@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Projekat3
@@ -17,11 +13,11 @@ namespace Projekat3
             server.Subscribe(observer1);
             //server.Subscribe(observer2);
             server.Start();
-           
-             Task.Delay(20000).ContinueWith(_ =>
+
+            Task.Delay(20000).ContinueWith(_ =>
             {
-                server.Subscribe(observer2);
-                Console.WriteLine("Observer 2 je sada pretplaćen na server događaje.");
+               server.Subscribe(observer2);
+               Console.WriteLine("Observer 2 je sada pretplaćen na server događaje.");
             });
 
             Console.WriteLine("Press Enter to stop the server...");
@@ -34,7 +30,7 @@ namespace Projekat3
             NASTAVITI SA RADOM DALJE SLANJEM OSTALIH UPITA I NA KRAJU KLIKNUTI ENTE
             http://localhost:8080/RangeNetworks/dev
             http://localhost:8080/malinica/sysprog-projekat2
-             */
+            */
         }
     }
 }

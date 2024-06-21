@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Reactive.Subjects;
 using Newtonsoft.Json.Linq;
-using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Threading;
-using System.Net;
-using Octokit;
 using VaderSharp;
-
-
 
 namespace Projekat3
 {
@@ -25,7 +15,6 @@ namespace Projekat3
         const string BASE_URL = "https://api.github.com/repos";
         HttpClient client;
         SentimentIntensityAnalyzer analyzer;
-
 
         public GitHubAPI()
         {
@@ -67,10 +56,10 @@ namespace Projekat3
                             var analyze = analyzer.PolarityScores(textComment);
                             var commObj = new IssueComment(textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
                             obj.AddComment(commObj);
-                           // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
+                            // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
                             stream.OnNext(commObj);
                         }
-                    r.AddIssue(obj);
+                        r.AddIssue(obj);
                     }
                     catch (Exception ex)
                     {
@@ -87,8 +76,5 @@ namespace Projekat3
                 return null;
             }
         }
-
-
-
     }
 }

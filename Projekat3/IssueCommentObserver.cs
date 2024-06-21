@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using VaderSharp;
 
 namespace Projekat3
 {
@@ -17,7 +12,6 @@ namespace Projekat3
         {
             ID = id;
         }
-
 
         public void OnCompleted()
         {

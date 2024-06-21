@@ -1,12 +1,6 @@
-﻿using Octokit.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Projekat3
 {
@@ -15,7 +9,7 @@ namespace Projekat3
         public string owner;
         public DateTime CreatedOnTime { get; set; }
         public List<Issue> issueList { get; set; }
-        private ReaderWriterLockSlim _lock;
+        private ReaderWriterLockSlim _lock { get; set; }
         public Repository()
         {
             CreatedOnTime = DateTime.Now;
@@ -24,9 +18,9 @@ namespace Projekat3
         }
         public void AddIssue(Issue i)
         {
+            _lock.EnterWriteLock();
             try
             {
-                _lock.EnterWriteLock();
                 issueList.Add(i);
             }
             catch (Exception ex)
@@ -34,26 +28,25 @@ namespace Projekat3
                 Console.WriteLine(ex.Message);
             }
             finally
-                {
+            {
                 _lock.ExitWriteLock();
             }
 
         }
         public override string ToString()
         {
+            _lock.EnterReadLock();
             try
             {
                 string text = "";
-
-                _lock.EnterReadLock();
-                text= "Owner " + owner+ "\n";
+                text = "Owner " + owner + "\n";
                 foreach (var i in issueList)
                 {
                     text += i.ToString();
                 }
                 return text;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return "";

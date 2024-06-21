@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Projekat3
 {
@@ -30,12 +26,12 @@ namespace Projekat3
         }
         public void AddComment(IssueComment iComm)
         {
+            _lock.EnterWriteLock();
             try
             {
-                _lock.EnterWriteLock();
                 _comments.Add(iComm);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -47,16 +43,15 @@ namespace Projekat3
 
         public override string ToString()
         {
+            _lock.EnterReadLock();
             try
             {
-                _lock.EnterReadLock();
                 string text = "";
                 text += $"IssueID: {issueID}, IssueText: {issueText}";
                 foreach (var c in _comments)
                 {
                     text += c.GetCommentDetails();
                 }
-
                 return text;
             }
             catch (Exception ex)
