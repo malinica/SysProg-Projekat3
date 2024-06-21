@@ -22,17 +22,21 @@ namespace Projekat3
 {
     public class Server : IObservable<IssueComment>
     {
+        private readonly Thread _listenerThread;
+        private bool _running;
         private ReplaySubject<IssueComment> issueStream;
+        private List<IDisposable> subscriptions;
         private HttpListener listener;
         private GitHubAPI api;
         private Cache cache;
-        private List<IDisposable> subscriptions;
 
 
         public Server()
         {
+            _listenerThread = new Thread(Listen);
             subscriptions = new List<IDisposable>();
-        cache = new Cache(10);
+            cache = new Cache(10);
+            _running = false;
             listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:8080/");
             issueStream = new ReplaySubject<IssueComment>(TimeSpan.FromSeconds(30));
@@ -51,21 +55,44 @@ namespace Projekat3
         public void Start()
         {
             Console.WriteLine("Server started");
+            _running = true;
             listener.Start();
-            while (true)
+            _listenerThread.Start();
+        }
+
+        public void Listen()
+        {
+            try
+            {
+            while (_running)
             {
                 var context = listener.GetContext();
                 Task.Run(() => HandleRequest(context));
             }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public void Stop()
         {
-            listener.Stop();
+            try
+            {
             issueStream.OnCompleted();
             issueStream.Dispose();
             foreach(var s in subscriptions)
             {
                 s.Dispose();
+            }
+            listener.Stop();
+            _running = false;
+            _listenerThread.Interrupt();
+            _listenerThread.Join();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
         public IDisposable Subscribe(IObserver<IssueComment> observer)
@@ -83,6 +110,7 @@ namespace Projekat3
             var request = context.Request;
             try
             {
+                Console.WriteLine("ASD");
             if (request.HttpMethod != "GET" || request.RawUrl.Contains("favicon.ico"))
             {
                 Answer(HttpStatusCode.BadRequest, "Bad request", context);
