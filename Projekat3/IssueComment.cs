@@ -2,10 +2,10 @@
 {
     public class IssueComment
     {
-        public string commentText { get; set; }
-        public double Positive { get; set; }
-        public double Negative { get; set; }
-        public double Neutral { get; set; }
+        private string commentText { get; set; }
+        private double Positive { get; set; }
+        private double Negative { get; set; }
+        private double Neutral { get; set; }
 
         public IssueComment(string cText, double positive, double neutral, double negative)
         {
@@ -18,7 +18,7 @@
         }
         public string GetCommentDetails()
         {
-            return $"Comment Text: {commentText}\nPositive: {Positive}\nNeutral: {Neutral}\nNegative: {Negative}";
+            return $"Comment Text: {commentText}\nPositive: {Positive}\nNeutral: {Neutral}\nNegative: {Negative} \n";
         }
     }
 }

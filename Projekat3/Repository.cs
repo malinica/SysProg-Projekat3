@@ -6,12 +6,15 @@ namespace Projekat3
 {
     public class Repository
     {
-        public string owner;
+        private string owner;
+        private string name;
         public DateTime CreatedOnTime { get; set; }
-        public List<Issue> issueList { get; set; }
+        private List<Issue> issueList { get; set; }
         private ReaderWriterLockSlim _lock { get; set; }
-        public Repository()
+        public Repository(string  o,string n)
         {
+            this.owner = o;
+            this.name = n;
             CreatedOnTime = DateTime.Now;
             issueList = new List<Issue>();
             _lock = new ReaderWriterLockSlim();
@@ -39,11 +42,16 @@ namespace Projekat3
             try
             {
                 string text = "";
-                text = "Owner " + owner + "\n";
-                foreach (var i in issueList)
+                if (issueList.Count > 0)
                 {
-                    text += i.ToString();
+
+                    foreach (var i in issueList)
+                    {
+                        text += i.ToString();
+                    }
                 }
+                else
+                    text += "No issues \n";
                 return text;
             }
             catch (Exception ex)

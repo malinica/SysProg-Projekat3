@@ -11,10 +11,10 @@ namespace Projekat3
 {
     public class GitHubAPI
     {
-        const string API_KEY = "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";
-        const string BASE_URL = "https://api.github.com/repos";
-        HttpClient client;
-        SentimentIntensityAnalyzer analyzer;
+        private const string API_KEY = "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";
+        private const string BASE_URL = "https://api.github.com/repos";
+        private HttpClient client;
+        private SentimentIntensityAnalyzer analyzer;
 
         public GitHubAPI()
         {
@@ -28,7 +28,7 @@ namespace Projekat3
         {
             try
             {
-                Repository r = new Repository();
+                Repository r = new Repository(owner,type);
                 var response = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues");
                 response.EnsureSuccessStatusCode();
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -42,12 +42,14 @@ namespace Projekat3
                 foreach (JObject item in responseJSON)
                 {
                     var idIssue = (string)item["number"];
+                    var login = (string)item["user"]["login"];
+                    var iText = (string)item["title"];
                     try
                     {
                         var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
                         commentsResponse.EnsureSuccessStatusCode();
                         var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
-                        var obj = new Issue(idIssue, type);
+                        var obj = new Issue(idIssue,iText,login);
                         var responseJSON2 = JArray.Parse(commentsResponseString);
 
                         foreach (var item2 in responseJSON2)

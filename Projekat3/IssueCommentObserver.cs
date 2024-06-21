@@ -5,7 +5,7 @@ namespace Projekat3
 {
     public class IssueCommentObserver : IObserver<IssueComment>
     {
-        public int ID { get; set; }
+        private int ID { get; set; }
         public IssueCommentObserver() { }
 
         public IssueCommentObserver(int id)

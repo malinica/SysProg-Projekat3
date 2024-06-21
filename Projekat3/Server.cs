@@ -36,6 +36,8 @@ namespace Projekat3
 
         public void Answer(HttpStatusCode code, string data, HttpListenerContext context)
         {
+            try
+            {
             var response = context.Response;
             byte[] buffer;
             response.StatusCode = (int)code;
@@ -43,14 +45,26 @@ namespace Projekat3
             response.ContentLength64 = buffer.Length;
             response.OutputStream.Write(buffer, 0, buffer.Length);
             response.OutputStream.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void Start()
         {
+            try
+            {
             Console.WriteLine("Server started");
             _running = true;
             listener.Start();
             _listenerThread.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void Listen()
@@ -102,10 +116,9 @@ namespace Projekat3
 
         private async void HandleRequest(HttpListenerContext context)
         {
-            var request = context.Request;
             try
             {
-                Console.WriteLine("ASD");
+            var request = context.Request;
                 if (request.HttpMethod != "GET" || request.RawUrl.Contains("favicon.ico"))
                 {
                     Answer(HttpStatusCode.BadRequest, "Bad request", context);
