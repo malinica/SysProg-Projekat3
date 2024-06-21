@@ -47,7 +47,7 @@ namespace Projekat3
                         var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
                         commentsResponse.EnsureSuccessStatusCode();
                         var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
-                        var obj = new Issue(idIssue, owner, type);
+                        var obj = new Issue(idIssue, type);
                         var responseJSON2 = JArray.Parse(commentsResponseString);
 
                         foreach (var item2 in responseJSON2)

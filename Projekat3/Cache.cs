@@ -10,15 +10,13 @@ namespace Projekat2
     {
         private ReaderWriterLockSlim _cacheLock;
         private Dictionary<string, Repository> _kes;
-        private int kesKapacitet;
         private int interval = 30000;
         private bool _istekao = false;
 
-        public Cache(int Kapacitet)
+        public Cache()
         {
-            kesKapacitet = Kapacitet;
             _cacheLock = new ReaderWriterLockSlim();
-            _kes = new Dictionary<string, Repository>(kesKapacitet);
+            _kes = new Dictionary<string, Repository>();
             PokreniPeriodicnoBrisanje();
         }
 

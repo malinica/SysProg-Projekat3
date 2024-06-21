@@ -26,7 +26,7 @@ namespace Projekat3
         {
             _listenerThread = new Thread(Listen);
             subscriptions = new List<IDisposable>();
-            cache = new Cache(10);
+            cache = new Cache();
             _running = false;
             listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:8080/");

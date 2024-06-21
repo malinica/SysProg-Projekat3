@@ -11,7 +11,7 @@ namespace Projekat3
         public List<IssueComment> _comments { get; set; }
         private ReaderWriterLockSlim _lock { get; set; }
 
-        public Issue(string iID, string iOwner, string iText)
+        public Issue(string iID, string iText)
         {
             _lock = new ReaderWriterLockSlim();
             _comments = new List<IssueComment>();
