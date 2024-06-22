@@ -26,16 +26,15 @@ namespace Projekat3
 
         }
 
-        public async Task<Repository> Search(string owner, string type, ReplaySubject<IssueComment> stream)
+        public async Task<List<Issue>> Search(string owner, string type)
         {
             try
             {
-                Repository r = new Repository(owner, type);
                 var response = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues");
                 response.EnsureSuccessStatusCode();
                 var responseString = await response.Content.ReadAsStringAsync();
                 var responseJSON = JArray.Parse(responseString);
-
+                List<Issue> iList = new List<Issue>();
                 if (responseJSON == null)
                 {
                     return null;
@@ -59,23 +58,23 @@ namespace Projekat3
                             var textComment = (string)item2["body"];
                             var analyze = analyzer.PolarityScores(textComment);
                             var commObj = new IssueComment(textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
-                            stream.OnNext(commObj);
                             obj.AddComment(commObj);
                             // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
                         }
-                        r.AddIssue(obj);
+                        iList.Add(obj);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        stream.OnError(ex);
+                        Console.WriteLine("Error while searching comments for issue");
                         return null;
                     }
                 }
-                return r;
+                return iList;
+
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                stream.OnError(ex);
+                Console.WriteLine("Error while searching issue");
                 return null;
             }
         }

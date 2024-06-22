@@ -25,8 +25,8 @@ namespace Projekat3
 
         public void OnNext(IssueComment value)
         {
-            Console.WriteLine($" Thread {Thread.CurrentThread.ManagedThreadId}, observer {ID} \n");
-            Console.WriteLine(value.GetCommentDetails());
+            Console.WriteLine($" Thread {Thread.CurrentThread.ManagedThreadId}, observer {ID} \n" + value.GetCommentDetails());
+            //Console.WriteLine(value.GetCommentDetails());
         }
     }
 }

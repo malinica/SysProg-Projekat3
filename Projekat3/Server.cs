@@ -153,7 +153,7 @@ namespace Projekat3
             }
         }
 
-        private async Task HandleRequest(HttpListenerContext context)
+        public async Task HandleRequest(HttpListenerContext context)
         {
             try
             {
@@ -181,7 +181,10 @@ namespace Projekat3
                 }
                 else
                 {
-                    var Rep = await api.Search(owner, type, issueStream);
+                    var list = await api.Search(owner, type);
+                    Notify(issueStream, list);
+                    var Rep = new Repository(owner, type);
+                    Rep.AddIssues(list);
                     await Answer(HttpStatusCode.OK, Rep.ToString(), context);
                     cache.DodajUKes(owner + "/" + type, Rep);
 
@@ -193,5 +196,20 @@ namespace Projekat3
                 Console.WriteLine(ex.Message);
             }
         }
+        public void Notify(ReplaySubject<IssueComment> stream, List<Issue> list)
+        {
+            try
+            {
+                foreach (var item in list)
+                    foreach (var comment in item._comments)
+                        if (comment != null)
+                            stream.OnNext(comment);
+            }
+            catch (Exception ex)
+            {
+                stream.OnError(ex);
+            }
+        }
     }
+
 }

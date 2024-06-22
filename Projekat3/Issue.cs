@@ -10,7 +10,7 @@ namespace Projekat3
         private string issueCreator;
         private string issueID;
         private string issueText;
-        private List<IssueComment> _comments;
+        public List<IssueComment> _comments;
 
         public Issue(string iID, string iText, string iC)
         {
