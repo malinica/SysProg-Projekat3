@@ -28,7 +28,7 @@ namespace Projekat3
         {
             try
             {
-                Repository r = new Repository(owner,type);
+                Repository r = new Repository(owner, type);
                 var response = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues");
                 response.EnsureSuccessStatusCode();
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -49,7 +49,7 @@ namespace Projekat3
                         var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
                         commentsResponse.EnsureSuccessStatusCode();
                         var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
-                        var obj = new Issue(idIssue,iText,login);
+                        var obj = new Issue(idIssue, iText, login);
                         var responseJSON2 = JArray.Parse(commentsResponseString);
 
                         foreach (var item2 in responseJSON2)

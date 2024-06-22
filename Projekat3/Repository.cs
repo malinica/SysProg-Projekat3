@@ -11,7 +11,7 @@ namespace Projekat3
         public DateTime CreatedOnTime { get; set; }
         private List<Issue> issueList { get; set; }
         private ReaderWriterLockSlim _lock { get; set; }
-        public Repository(string  o,string n)
+        public Repository(string o, string n)
         {
             this.owner = o;
             this.name = n;

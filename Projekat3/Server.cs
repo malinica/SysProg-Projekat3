@@ -38,13 +38,13 @@ namespace Projekat3
         {
             try
             {
-            var response = context.Response;
-            byte[] buffer;
-            response.StatusCode = (int)code;
-            buffer = Encoding.UTF8.GetBytes(data);
-            response.ContentLength64 = buffer.Length;
-            response.OutputStream.Write(buffer, 0, buffer.Length);
-            response.OutputStream.Close();
+                var response = context.Response;
+                byte[] buffer;
+                response.StatusCode = (int)code;
+                buffer = Encoding.UTF8.GetBytes(data);
+                response.ContentLength64 = buffer.Length;
+                response.OutputStream.Write(buffer, 0, buffer.Length);
+                response.OutputStream.Close();
             }
             catch (Exception ex)
             {
@@ -56,10 +56,10 @@ namespace Projekat3
         {
             try
             {
-            Console.WriteLine("Server started");
-            _running = true;
-            listener.Start();
-            _listenerThread.Start();
+                Console.WriteLine("Server started");
+                _running = true;
+                listener.Start();
+                _listenerThread.Start();
             }
             catch (Exception ex)
             {
@@ -118,7 +118,7 @@ namespace Projekat3
         {
             try
             {
-            var request = context.Request;
+                var request = context.Request;
                 if (request.HttpMethod != "GET" || request.RawUrl.Contains("favicon.ico"))
                 {
                     Answer(HttpStatusCode.BadRequest, "Bad request", context);

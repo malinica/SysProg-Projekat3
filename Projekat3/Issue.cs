@@ -12,7 +12,7 @@ namespace Projekat3
         private List<IssueComment> _comments { get; set; }
         private ReaderWriterLockSlim _lock { get; set; }
 
-        public Issue(string iID, string iText,string iC)
+        public Issue(string iID, string iText, string iC)
         {
             _lock = new ReaderWriterLockSlim();
             _comments = new List<IssueComment>();
@@ -52,12 +52,12 @@ namespace Projekat3
                 text += $"IssueID: {issueID}, Issue Creator: {issueCreator} , IssueText: {issueText} \n";
                 if (_comments.Count > 0)
                 {
-                foreach (var c in _comments)
-                {
-                    text += c.GetCommentDetails();
+                    foreach (var c in _comments)
+                    {
+                        text += c.GetCommentDetails();
+                    }
                 }
-                }
-                        else
+                else
                 {
                     text += " No comments \n";
                 }

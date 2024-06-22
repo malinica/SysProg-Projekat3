@@ -16,8 +16,8 @@ namespace Projekat3
 
             Task.Delay(20000).ContinueWith(_ =>
             {
-               server.Subscribe(observer2);
-               Console.WriteLine("Observer 2 je sada pretplaćen na server događaje.");
+                server.Subscribe(observer2);
+                Console.WriteLine("Observer 2 je sada pretplaćen na server događaje.");
             });
 
             Console.WriteLine("Press Enter to stop the server...");
