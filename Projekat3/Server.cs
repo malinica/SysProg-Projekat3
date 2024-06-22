@@ -15,6 +15,7 @@ namespace Projekat3
     {
         private readonly Thread _listenerThread;
         private bool _running;
+        private ReaderWriterLockSlim _lock;
         private ReplaySubject<IssueComment> issueStream;
         private List<IDisposable> subscriptions;
         private HttpListener listener;
@@ -24,6 +25,7 @@ namespace Projekat3
 
         public Server()
         {
+            _lock = new ReaderWriterLockSlim();
             _listenerThread = new Thread(Listen);
             subscriptions = new List<IDisposable>();
             cache = new Cache();
@@ -85,6 +87,7 @@ namespace Projekat3
 
         public void Stop()
         {
+            _lock.EnterWriteLock();
             try
             {
                 issueStream.OnCompleted();
@@ -102,6 +105,10 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
         }
 
         public IDisposable Subscribe(IObserver<IssueComment> observer)
@@ -110,8 +117,36 @@ namespace Projekat3
                 .SubscribeOn(NewThreadScheduler.Default)
                 .ObserveOn(ThreadPoolScheduler.Instance)
                 .Subscribe(observer);
-            subscriptions.Add(subscription);
+
+            _lock.EnterWriteLock();
+            try
+            {
+                subscriptions.Add(subscription);
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
+
             return subscription;
+        }
+        public void Unsubscribe(IDisposable sub)
+        {
+            _lock.EnterWriteLock();
+            try
+            {
+                var subscriptionToRemove = subscriptions.Find(s => s.Equals(sub));
+                if (subscriptionToRemove != null)
+                {
+                    subscriptions.Remove(subscriptionToRemove);
+                    subscriptionToRemove.Dispose();
+                    Console.WriteLine("Subscription removed \n");
+                }
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
         }
 
         private async void HandleRequest(HttpListenerContext context)
@@ -136,25 +171,15 @@ namespace Projekat3
                 if (cache.ImaKljuc(owner + "/" + type))
                 {
                     var rep = cache.CitajIzKesa(owner + "/" + type);
-                    /*
-                    foreach (var i in rep.issueList)
-                    {
-                        foreach(var c in i._comments)
-                        {
-
-                        issueStream.OnNext(c);
-                        }
-                    }
-                    */
                     Answer(HttpStatusCode.OK, rep.ToString(), context);
 
                     return;
                 }
                 else
                 {
-                    var issue = await api.Search(owner, type, issueStream);
-                    Answer(HttpStatusCode.OK, issue.ToString(), context);
-                    cache.DodajUKes(owner + "/" + type, issue);
+                    var Rep = await api.Search(owner, type, issueStream);
+                    Answer(HttpStatusCode.OK, Rep.ToString(), context);
+                    cache.DodajUKes(owner + "/" + type, Rep);
 
                 }
                 return;

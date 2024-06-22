@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 
 namespace Projekat3
@@ -8,9 +9,9 @@ namespace Projekat3
     {
         private string owner;
         private string name;
-        public DateTime CreatedOnTime { get; set; }
-        private List<Issue> issueList { get; set; }
-        private ReaderWriterLockSlim _lock { get; set; }
+        public DateTime CreatedOnTime;
+        private List<Issue> issueList;
+        private ReaderWriterLockSlim _lock;
         public Repository(string o, string n)
         {
             this.owner = o;
@@ -34,30 +35,48 @@ namespace Projekat3
             {
                 _lock.ExitWriteLock();
             }
+        }
+        public void AddIssues(List<Issue> iList)
+        {
+            _lock.EnterWriteLock();
+            try
+            {
+                foreach(var i in iList)
+                issueList.Add(i);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
 
         }
+
         public override string ToString()
         {
             _lock.EnterReadLock();
             try
             {
-                string text = "";
+                StringBuilder sb = new StringBuilder();
                 if (issueList.Count > 0)
                 {
 
                     foreach (var i in issueList)
                     {
-                        text += i.ToString();
+                        sb.AppendLine(i.ToString());
                     }
                 }
                 else
-                    text += "No issues \n";
-                return text;
+                    sb.AppendLine("No issues \n");
+                return sb.ToString();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return "";
+                return "Error in Repository .ToString()";
             }
             finally
             {

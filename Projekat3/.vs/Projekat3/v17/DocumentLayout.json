@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\",
+  "WorkspaceRootPath": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|c:\\users\\marko\\desktop\\sysprog-projekat3\\projekat3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|c:\\users\\acer swift 3\\desktop\\sysprog-projekat3\\projekat3\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\githubapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\githubapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:githubapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -48,11 +48,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Program.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAIwBYAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-05T21:16:46.668Z",
               "IsPinned": true,
@@ -60,13 +60,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Repository.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Repository.cs",
               "RelativeDocumentMoniker": "Repository.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Repository.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Repository.cs",
               "RelativeToolTip": "Repository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAFAAAA",
+              "ViewState": "AQIAACYAAAAAAAAAAAA3wAsAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T14:13:20.477Z",
               "IsPinned": true,
@@ -74,13 +74,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Issue.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Issue.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Issue.cs",
               "RelativeDocumentMoniker": "Issue.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Issue.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Issue.cs",
               "RelativeToolTip": "Issue.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAANAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAuwA0AAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T13:16:01.523Z",
               "IsPinned": true,
@@ -88,13 +88,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IssueComment.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueComment.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueComment.cs",
               "RelativeDocumentMoniker": "IssueComment.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueComment.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueComment.cs",
               "RelativeToolTip": "IssueComment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-07T10:20:08.985Z",
               "IsPinned": true,
@@ -102,27 +102,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "IssueCommentObserver.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueCommentObserver.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueCommentObserver.cs",
               "RelativeDocumentMoniker": "IssueCommentObserver.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueCommentObserver.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\IssueCommentObserver.cs",
               "RelativeToolTip": "IssueCommentObserver.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T19:24:55.213Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Cache.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Cache.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Cache.cs",
               "RelativeDocumentMoniker": "Cache.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Cache.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Cache.cs",
               "RelativeToolTip": "Cache.cs",
-              "ViewState": "AQIAAJUAAAAAAAAAAAAUwKoAAAAUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T13:07:37.433Z",
               "IsPinned": true,
@@ -130,13 +129,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "GitHubAPI.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\GitHubAPI.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\GitHubAPI.cs",
               "RelativeDocumentMoniker": "GitHubAPI.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\GitHubAPI.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\GitHubAPI.cs",
               "RelativeToolTip": "GitHubAPI.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAA4wCsAAAA5AAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAIwEAAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-09T09:42:32.694Z",
               "IsPinned": true,
@@ -144,17 +143,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "Server.cs",
-              "DocumentMoniker": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Server.cs",
+              "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Server.cs",
               "RelativeDocumentMoniker": "Server.cs",
-              "ToolTip": "C:\\Users\\Acer Swift 3\\Desktop\\SysProg-Projekat3\\Projekat3\\Server.cs",
+              "ToolTip": "C:\\Users\\Marko\\Desktop\\SysProg-Projekat3\\Projekat3\\Server.cs",
               "RelativeToolTip": "Server.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIYAAAAkAAAA",
+              "ViewState": "AQIAAJUAAAAAAAAAAAAAALQAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T19:27:53.546Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

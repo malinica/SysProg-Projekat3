@@ -2,10 +2,10 @@
 {
     public class IssueComment
     {
-        private string commentText { get; set; }
-        private double Positive { get; set; }
-        private double Negative { get; set; }
-        private double Neutral { get; set; }
+        private string commentText;
+        private double Positive;
+        private double Negative;
+        private double Neutral;
 
         public IssueComment(string cText, double positive, double neutral, double negative)
         {

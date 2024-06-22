@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 
 namespace Projekat3
 {
     public class Issue
     {
-        private string issueCreator { get; set; }
-        private string issueID { get; set; }
-        private string issueText { get; set; }
-        private List<IssueComment> _comments { get; set; }
-        private ReaderWriterLockSlim _lock { get; set; }
+        private string issueCreator;
+        private string issueID;
+        private string issueText;
+        private List<IssueComment> _comments;
+        private ReaderWriterLockSlim _lock;
 
         public Issue(string iID, string iText, string iC)
         {
@@ -43,30 +44,48 @@ namespace Projekat3
             }
         }
 
+        public void AddComments(List<IssueComment> iCommList)
+        {
+            _lock.EnterWriteLock();
+            try
+            {
+                foreach(var iComm in iCommList)
+                _comments.Add(iComm);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
+        }
+
         public override string ToString()
         {
             _lock.EnterReadLock();
             try
             {
-                string text = "";
-                text += $"IssueID: {issueID}, Issue Creator: {issueCreator} , IssueText: {issueText} \n";
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine( $"IssueID: {issueID}, Issue Creator: {issueCreator} , IssueText: {issueText} \n");
                 if (_comments.Count > 0)
                 {
                     foreach (var c in _comments)
                     {
-                        text += c.GetCommentDetails();
+                        sb.AppendLine(c.GetCommentDetails());
                     }
                 }
                 else
                 {
-                    text += " No comments \n";
+                    sb.AppendLine(" No comments \n");
                 }
-                return text;
+                return sb.ToString();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return "";
+                return "Error in Issue .ToString()";
             }
             finally
             {
