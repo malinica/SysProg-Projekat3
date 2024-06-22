@@ -30,7 +30,6 @@ namespace Projekat3
             try
             {
                 Repository r = new Repository(owner, type);
-                List<Issue> iList = new List<Issue>();
                 var response = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues");
                 response.EnsureSuccessStatusCode();
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -51,21 +50,19 @@ namespace Projekat3
                         var commentsResponse = await client.GetAsync($"{BASE_URL}/{owner}/{type}/issues/{idIssue}/comments");
                         commentsResponse.EnsureSuccessStatusCode();
                         var commentsResponseString = await commentsResponse.Content.ReadAsStringAsync();
-                        var responseJSON2 = JArray.Parse(commentsResponseString);
                         var obj = new Issue(idIssue, iText, login);
-                        List<IssueComment> commList = new List<IssueComment>();
+                        var responseJSON2 = JArray.Parse(commentsResponseString);
+
                         foreach (var item2 in responseJSON2)
                         {
                             var textComment = (string)item2["body"];
                             var analyze = analyzer.PolarityScores(textComment);
                             var commObj = new IssueComment(textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
-                            commList.Add(commObj);
-                            // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
-                            if(commObj!=null)
                             stream.OnNext(commObj);
+                            obj.AddComment(commObj);
+                            // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
                         }
-                        obj.AddComments(commList);
-                        iList.Add(obj);
+                        r.AddIssue(obj);
                     }
                     catch (Exception ex)
                     {
@@ -73,7 +70,6 @@ namespace Projekat3
                         return null;
                     }
                 }
-                r.AddIssues(iList);
                 return r;
 
             }

@@ -11,11 +11,9 @@ namespace Projekat3
         private string issueID;
         private string issueText;
         private List<IssueComment> _comments;
-        private ReaderWriterLockSlim _lock;
 
         public Issue(string iID, string iText, string iC)
         {
-            _lock = new ReaderWriterLockSlim();
             _comments = new List<IssueComment>();
             this.issueID = iID;
             this.issueText = iText;
@@ -23,13 +21,11 @@ namespace Projekat3
         }
         public Issue()
         {
-            _lock = new ReaderWriterLockSlim();
             _comments = new List<IssueComment>();
 
         }
         public void AddComment(IssueComment iComm)
         {
-            _lock.EnterWriteLock();
             try
             {
                 _comments.Add(iComm);
@@ -38,15 +34,10 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                _lock.ExitWriteLock();
-            }
         }
 
         public void AddComments(List<IssueComment> iCommList)
         {
-            _lock.EnterWriteLock();
             try
             {
                 foreach(var iComm in iCommList)
@@ -56,15 +47,10 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                _lock.ExitWriteLock();
-            }
         }
 
         public override string ToString()
         {
-            _lock.EnterReadLock();
             try
             {
                 StringBuilder sb = new StringBuilder();
@@ -86,10 +72,6 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
                 return "Error in Issue .ToString()";
-            }
-            finally
-            {
-                _lock.ExitReadLock();
             }
         }
     }

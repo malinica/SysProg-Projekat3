@@ -11,18 +11,15 @@ namespace Projekat3
         private string name;
         public DateTime CreatedOnTime;
         private List<Issue> issueList;
-        private ReaderWriterLockSlim _lock;
         public Repository(string o, string n)
         {
             this.owner = o;
             this.name = n;
             CreatedOnTime = DateTime.Now;
             issueList = new List<Issue>();
-            _lock = new ReaderWriterLockSlim();
         }
         public void AddIssue(Issue i)
         {
-            _lock.EnterWriteLock();
             try
             {
                 issueList.Add(i);
@@ -31,14 +28,10 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                _lock.ExitWriteLock();
-            }
+
         }
         public void AddIssues(List<Issue> iList)
         {
-            _lock.EnterWriteLock();
             try
             {
                 foreach(var i in iList)
@@ -48,16 +41,10 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                _lock.ExitWriteLock();
-            }
-
         }
 
         public override string ToString()
         {
-            _lock.EnterReadLock();
             try
             {
                 StringBuilder sb = new StringBuilder();
@@ -77,10 +64,6 @@ namespace Projekat3
             {
                 Console.WriteLine(ex.Message);
                 return "Error in Repository .ToString()";
-            }
-            finally
-            {
-                _lock.ExitReadLock();
             }
         }
     }
