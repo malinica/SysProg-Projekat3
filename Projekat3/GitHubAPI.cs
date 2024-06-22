@@ -60,7 +60,6 @@ namespace Projekat3
                             var analyze = analyzer.PolarityScores(textComment);
                             var commObj = new IssueComment(textComment, analyze.Positive, analyze.Neutral, analyze.Negative);
                             commList.Add(commObj);
-                            //   obj.AddComment(commObj);
                             // Console.WriteLine($"Emitovano sa threada {Thread.CurrentThread.ManagedThreadId}");
                             if(commObj!=null)
                             stream.OnNext(commObj);

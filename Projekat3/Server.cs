@@ -36,7 +36,7 @@ namespace Projekat3
             api = new GitHubAPI();
         }
 
-        public void Answer(HttpStatusCode code, string data, HttpListenerContext context)
+        public async Task Answer(HttpStatusCode code, string data, HttpListenerContext context)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Projekat3
                 response.StatusCode = (int)code;
                 buffer = Encoding.UTF8.GetBytes(data);
                 response.ContentLength64 = buffer.Length;
-                response.OutputStream.Write(buffer, 0, buffer.Length);
+               await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
                 response.OutputStream.Close();
             }
             catch (Exception ex)
@@ -69,14 +69,17 @@ namespace Projekat3
             }
         }
 
-        public void Listen()
+        public async void Listen()
         {
             try
             {
                 while (_running)
                 {
-                    var context = listener.GetContext();
-                    Task.Run(() => HandleRequest(context));
+                    var context = await listener.GetContextAsync();
+                if(_running)
+                    {
+                        await HandleRequest(context);
+                    }
                 }
             }
             catch (Exception ex)
@@ -149,21 +152,21 @@ namespace Projekat3
             }
         }
 
-        private async void HandleRequest(HttpListenerContext context)
+        private async Task HandleRequest(HttpListenerContext context)
         {
             try
             {
                 var request = context.Request;
                 if (request.HttpMethod != "GET" || request.RawUrl.Contains("favicon.ico"))
                 {
-                    Answer(HttpStatusCode.BadRequest, "Bad request", context);
+                await    Answer(HttpStatusCode.BadRequest, "Bad request", context);
                     return;
                 }
 
                 string[] parts = request.RawUrl.Split('/');
                 if (parts.Length != 3)
                 {
-                    Answer(HttpStatusCode.BadRequest, "Bad parameters of the request", context);
+                await  Answer(HttpStatusCode.BadRequest, "Bad parameters of the request", context);
                     return;
                 }
                 var owner = parts[1];
@@ -171,14 +174,14 @@ namespace Projekat3
                 if (cache.ImaKljuc(owner + "/" + type))
                 {
                     var rep = cache.CitajIzKesa(owner + "/" + type);
-                    Answer(HttpStatusCode.OK, rep.ToString(), context);
+                 await   Answer(HttpStatusCode.OK, rep.ToString(), context);
 
                     return;
                 }
                 else
                 {
                     var Rep = await api.Search(owner, type, issueStream);
-                    Answer(HttpStatusCode.OK, Rep.ToString(), context);
+                await   Answer(HttpStatusCode.OK, Rep.ToString(), context);
                     cache.DodajUKes(owner + "/" + type, Rep);
 
                 }
