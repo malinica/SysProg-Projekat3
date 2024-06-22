@@ -25,6 +25,7 @@ namespace Projekat3
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0"));
 
         }
+
         public async Task<Repository> Search(string owner, string type, ReplaySubject<IssueComment> stream)
         {
             try
@@ -71,7 +72,6 @@ namespace Projekat3
                     }
                 }
                 return r;
-
             }
             catch (Exception ex)
             {

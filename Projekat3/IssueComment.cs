@@ -16,6 +16,7 @@
             this.Neutral = neutral;
 
         }
+
         public string GetCommentDetails()
         {
             return $"Comment Text: {commentText}\nPositive: {Positive}\nNeutral: {Neutral}\nNegative: {Negative} \n";

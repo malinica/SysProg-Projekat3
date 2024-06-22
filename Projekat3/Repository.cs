@@ -11,6 +11,7 @@ namespace Projekat3
         private string name;
         public DateTime CreatedOnTime;
         private List<Issue> issueList;
+
         public Repository(string o, string n)
         {
             this.owner = o;
@@ -18,6 +19,7 @@ namespace Projekat3
             CreatedOnTime = DateTime.Now;
             issueList = new List<Issue>();
         }
+
         public void AddIssue(Issue i)
         {
             try
@@ -30,6 +32,7 @@ namespace Projekat3
             }
 
         }
+
         public void AddIssues(List<Issue> iList)
         {
             try

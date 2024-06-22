@@ -45,7 +45,7 @@ namespace Projekat3
                 response.StatusCode = (int)code;
                 buffer = Encoding.UTF8.GetBytes(data);
                 response.ContentLength64 = buffer.Length;
-               await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+                await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
                 response.OutputStream.Close();
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace Projekat3
                 while (_running)
                 {
                     var context = await listener.GetContextAsync();
-                if(_running)
+                    if (_running)
                     {
                         await HandleRequest(context);
                     }
@@ -133,6 +133,7 @@ namespace Projekat3
 
             return subscription;
         }
+
         public void Unsubscribe(IDisposable sub)
         {
             _lock.EnterWriteLock();
@@ -159,14 +160,14 @@ namespace Projekat3
                 var request = context.Request;
                 if (request.HttpMethod != "GET" || request.RawUrl.Contains("favicon.ico"))
                 {
-                await    Answer(HttpStatusCode.BadRequest, "Bad request", context);
+                    await Answer(HttpStatusCode.BadRequest, "Bad request", context);
                     return;
                 }
 
                 string[] parts = request.RawUrl.Split('/');
                 if (parts.Length != 3)
                 {
-                await  Answer(HttpStatusCode.BadRequest, "Bad parameters of the request", context);
+                    await Answer(HttpStatusCode.BadRequest, "Bad parameters of the request", context);
                     return;
                 }
                 var owner = parts[1];
@@ -174,14 +175,14 @@ namespace Projekat3
                 if (cache.ImaKljuc(owner + "/" + type))
                 {
                     var rep = cache.CitajIzKesa(owner + "/" + type);
-                 await   Answer(HttpStatusCode.OK, rep.ToString(), context);
+                    await Answer(HttpStatusCode.OK, rep.ToString(), context);
 
                     return;
                 }
                 else
                 {
                     var Rep = await api.Search(owner, type, issueStream);
-                await   Answer(HttpStatusCode.OK, Rep.ToString(), context);
+                    await Answer(HttpStatusCode.OK, Rep.ToString(), context);
                     cache.DodajUKes(owner + "/" + type, Rep);
 
                 }
@@ -193,5 +194,4 @@ namespace Projekat3
             }
         }
     }
-
 }

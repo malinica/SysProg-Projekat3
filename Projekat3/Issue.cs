@@ -19,11 +19,13 @@ namespace Projekat3
             this.issueText = iText;
             this.issueCreator = iC;
         }
+
         public Issue()
         {
             _comments = new List<IssueComment>();
 
         }
+
         public void AddComment(IssueComment iComm)
         {
             try
