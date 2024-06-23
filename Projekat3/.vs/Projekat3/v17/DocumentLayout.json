@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\githubapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:githubapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|c:\\users\\marko\\desktop\\fakultet\\sysprog-projekat3\\projekat3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:cache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|c:\\users\\marko\\desktop\\fakultet\\sysprog-projekat3\\projekat3\\issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecommentobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{451C3488-866A-4177-B5B9-5FB8F01EB9EE}|Projekat3.csproj|solutionrelative:issuecomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwCEAAAAAAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwA4AAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-05T21:16:46.668Z",
               "IsPinned": true,
@@ -60,16 +60,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Repository.cs",
               "RelativeDocumentMoniker": "Repository.cs",
               "ToolTip": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Repository.cs",
               "RelativeToolTip": "Repository.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAkwC8AAAAAAAAA",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAAAAwAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T14:13:20.477Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -79,7 +80,7 @@
               "RelativeDocumentMoniker": "Issue.cs",
               "ToolTip": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Issue.cs",
               "RelativeToolTip": "Issue.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAQwAwAAAAOAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAowAwAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T13:16:01.523Z",
               "IsPinned": true,
@@ -87,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "IssueComment.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\IssueComment.cs",
               "RelativeDocumentMoniker": "IssueComment.cs",
@@ -96,12 +97,11 @@
               "ViewState": "AQIAAAgAAAAAAAAAAAAAwBIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-07T10:20:08.985Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "IssueCommentObserver.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\IssueCommentObserver.cs",
               "RelativeDocumentMoniker": "IssueCommentObserver.cs",
@@ -115,20 +115,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Cache.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Cache.cs",
               "RelativeDocumentMoniker": "Cache.cs",
               "ToolTip": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Cache.cs",
               "RelativeToolTip": "Cache.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAJAAAA",
+              "ViewState": "AQIAAMIAAAAAAAAAAAAUwDUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T13:07:37.433Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "GitHubAPI.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\GitHubAPI.cs",
               "RelativeDocumentMoniker": "GitHubAPI.cs",
@@ -142,13 +143,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Server.cs",
               "DocumentMoniker": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Server.cs",
               "RelativeDocumentMoniker": "Server.cs",
               "ToolTip": "C:\\Users\\Marko\\Desktop\\Fakultet\\SysProg-Projekat3\\Projekat3\\Server.cs",
               "RelativeToolTip": "Server.cs",
-              "ViewState": "AQIAALUAAAAAAAAAAADwv8EAAAAgAAAA",
+              "ViewState": "AQIAAMEAAAAAAAAAAADwv8wAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T19:27:53.546Z",
               "IsPinned": true,

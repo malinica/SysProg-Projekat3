@@ -26,10 +26,7 @@ namespace Projekat3
             while (Console.ReadKey().Key != ConsoleKey.Enter) { }
             server.Stop();
             /*
-            POSLATI SLEDECI ZAHTEV ODMAH PRI POKRETANJU, OPSLUZUJE SE OBSERVER 1 I OBSERVER 3
             http://localhost:8080/4ian/gdevelop
-            NAKON NEKOLIKO SEKUNDI SUBSCRIBUJE SE I OBSERVER 2 I ON DOBIJA NOTIFIKACIJE OD PRE, A OBSERVER 3 PONISTAVA SUB
-            NASTAVITI SA RADOM DALJE SLANJEM OSTALIH UPITA I NA KRAJU KLIKNUTI ENTER
             http://localhost:8080/RangeNetworks/dev
             http://localhost:8080/malinica/sysprog-projekat2
             */

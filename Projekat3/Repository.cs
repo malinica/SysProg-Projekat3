@@ -9,8 +9,8 @@ namespace Projekat3
     {
         private string owner;
         private string name;
-        public DateTime CreatedOnTime;
         private List<Issue> issueList;
+        public DateTime CreatedOnTime;
 
         public Repository(string o, string n)
         {
