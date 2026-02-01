@@ -1,2 +1,3 @@
 # SysProg-Projekat3
-Koristeći principe Reaktivnog programiranja i Github API, implementirati aplikaciju za analizu komentara koji se tiču zadatih problema (eng. Issue) u okviru projekta. Za prikupljene komentare implementirati Sentiment analizu koristeći VaderSharp biblioteku. Prikazati dobijene rezultate.
+
+Projekat je razvijen u okviru kursa *Sistemsko programiranje* i predstavlja aplikaciju koja koristi principe Reaktivnog programiranja za obradu podataka sa GitHub API‑ja. Cilj aplikacije je da analizira komentare vezane za zadate Issue‑e u okviru GitHub repozitorijuma i da na osnovu njih izvrši sentiment analizu koristeći biblioteku VaderSharp. Rezultati analize se zatim prikazuju u čitljivom formatu.
